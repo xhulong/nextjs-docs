@@ -1,7 +1,7 @@
 {
   "index": {
     "type": "page",
-    "title": "JAVGO",
+    "title": "TABZCLOUD",
     "display": "hidden",
     "theme": {
       "layout": "raw"
@@ -25,7 +25,14 @@
   "Interview-Collection": "面试题集",
   "Web-Frontend": "Web 前端",
   "chat": {
-    "title": "聊天",
+    "title": "豆包",
+    "type": "page",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "gpt": {
+    "title": "GPT",
     "type": "page",
     "theme": {
       "layout": "raw"
@@ -37,12 +44,6 @@
     "theme": {
       "layout": "raw"
     }
-  },
-  "contact": {
-    "title": "联系 ↗",
-    "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
   },
   "about": {
     "title": "关于",

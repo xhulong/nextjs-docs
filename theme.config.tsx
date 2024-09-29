@@ -69,15 +69,14 @@ const config: DocsThemeConfig = {
                         <g>
                             <rect fill="#333333" fillOpacity="0" strokeWidth="2" x="0" y="0" width="33.988711362035"
                                   height="55.330074333026744" className="image-rect"></rect>
-                            <svg x="0" y="0" width="33.988711362035" height="55.330074333026744"
-                                 className="image-svg-svg primary">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.600000381469727 14">
-                                    <path d="M7 3.2H2.22a1.6 1.6 0 0 1 0-3.2H7a1.6 1.6 0 1 1 0 3.2z"
-                                          fill="#1eadef"></path>
-                                    <path
-                                        d="M1.6 14a1.6 1.6 0 0 1 0-3.2 3.8 3.8 0 0 0 3.76-3.48V1.65a1.6 1.6 0 0 1 3.2 0v5.89a6.93 6.93 0 0 1-2.21 4.55A7 7 0 0 1 1.6 14zm3.76-6.72z"
-                                        fill="#f1511b"></path>
-                                </svg>
+                            <svg d="1727597465558" className="icon" viewBox="0 0 1024 1024" version="1.1"
+                                 xmlns="http://www.w3.org/2000/svg" p-id="7440" width="50" height="50">
+                                <path
+                                    d="M676.41 762.6c17.46 17.47 28.3 41.55 28.3 68.04 0 26.51-10.84 50.59-28.3 68.06-17.47 17.46-41.55 28.3-68.06 28.3-0.67 0-1.34 0-2.01-0.01-84.89-1.08-153.4-70.23-153.4-155.4V578.88c0 36.39 12.51 69.87 33.47 96.35 28.46 35.97 72.51 59.06 121.94 59.06 26.51 0 50.59 10.84 68.06 28.31z"
+                                    fill="#f4ea2a" p-id="7441"></path>
+                                <path
+                                    d="M452.94 771.59c0 85.16 68.5 154.32 153.4 155.4-55.11-0.31-107.18-13.43-153.4-36.52-114.26-57.1-192.71-175.18-192.71-311.59V193.36c0-53 43.37-96.35 96.35-96.35 53 0 96.35 43.35 96.35 96.35v37.4H667.4c22.42 0 43.1 7.76 59.53 20.73 22.39 17.68 36.83 45.06 36.83 75.63 0 26.51-10.84 50.59-28.3 68.06-17.47 17.46-41.55 28.3-68.06 28.3H452.94v348.11z"
+                                    fill="#f4ea2a" p-id="7442"></path>
                             </svg>
                         </g>
                     </g>
@@ -85,13 +84,13 @@ const config: DocsThemeConfig = {
                 </g>
             </svg>
             <span style={{marginLeft: '.4em', fontWeight: 800}}>
-        JAVGO
+        TABZCLOUD
       </span>
         </>
     ),
     // github
     project: {
-        link: 'https://github.com/javgocn/javgo-web',
+        link: 'https://gitee.com/tabzxiao/nextjs-docs',
         icon: (
             <svg className="icon" viewBox="0 0 1024 1024" version="1.1"
                  xmlns="http://www.w3.org/2000/svg" p-id="4382" width="24" height="24">
@@ -183,15 +182,14 @@ const config: DocsThemeConfig = {
                                 <rect fill="#333333" fillOpacity="0" strokeWidth="2" x="0" y="0"
                                       width="33.988711362035"
                                       height="55.330074333026744" className="image-rect"></rect>
-                                <svg x="0" y="0" width="33.988711362035" height="55.330074333026744"
-                                     className="image-svg-svg primary">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.600000381469727 14">
-                                        <path d="M7 3.2H2.22a1.6 1.6 0 0 1 0-3.2H7a1.6 1.6 0 1 1 0 3.2z"
-                                              fill="#1eadef"></path>
-                                        <path
-                                            d="M1.6 14a1.6 1.6 0 0 1 0-3.2 3.8 3.8 0 0 0 3.76-3.48V1.65a1.6 1.6 0 0 1 3.2 0v5.89a6.93 6.93 0 0 1-2.21 4.55A7 7 0 0 1 1.6 14zm3.76-6.72z"
-                                            fill="#f1511b"></path>
-                                    </svg>
+                                <svg d="1727597465558" className="icon" viewBox="0 0 1024 1024" version="1.1"
+                                     xmlns="http://www.w3.org/2000/svg" p-id="7440" width="50" height="50">
+                                    <path
+                                        d="M676.41 762.6c17.46 17.47 28.3 41.55 28.3 68.04 0 26.51-10.84 50.59-28.3 68.06-17.47 17.46-41.55 28.3-68.06 28.3-0.67 0-1.34 0-2.01-0.01-84.89-1.08-153.4-70.23-153.4-155.4V578.88c0 36.39 12.51 69.87 33.47 96.35 28.46 35.97 72.51 59.06 121.94 59.06 26.51 0 50.59 10.84 68.06 28.31z"
+                                        fill="#f4ea2a" p-id="7441"></path>
+                                    <path
+                                        d="M452.94 771.59c0 85.16 68.5 154.32 153.4 155.4-55.11-0.31-107.18-13.43-153.4-36.52-114.26-57.1-192.71-175.18-192.71-311.59V193.36c0-53 43.37-96.35 96.35-96.35 53 0 96.35 43.35 96.35 96.35v37.4H667.4c22.42 0 43.1 7.76 59.53 20.73 22.39 17.68 36.83 45.06 36.83 75.63 0 26.51-10.84 50.59-28.3 68.06-17.47 17.46-41.55 28.3-68.06 28.3H452.94v348.11z"
+                                        fill="#f4ea2a" p-id="7442"></path>
                                 </svg>
                             </g>
                         </g>
@@ -200,8 +198,8 @@ const config: DocsThemeConfig = {
                 </svg>
                 <span>
         MIT {new Date().getFullYear()} ©{' '}
-                    <a href="https://github.com/javgocn/javgo-web" target="_blank">
-          JAVGO
+                    <a href="https://gitee.com/tabzxiao/nextjs-docs" target="_blank">
+          TABZCLOUD
         </a>
         .&nbsp;&nbsp;&nbsp;
       </span>
@@ -214,7 +212,7 @@ const config: DocsThemeConfig = {
                 <span>
                     {/* ICP 备案信息 */}
                     <a href="https://beian.miit.gov.cn/" target="_blank">
-          黔ICP备2023002021号-2
+          吉ICP备2022001922号-2
         </a>
                 </span>
                 <svg className="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -240,7 +238,7 @@ const config: DocsThemeConfig = {
         const {asPath} = useRouter()
         if (asPath !== '/') {
             return {
-                titleTemplate: '%s – JAVGO'
+                titleTemplate: '%s – TABZCLOUD'
             }
         }
     },
@@ -248,8 +246,8 @@ const config: DocsThemeConfig = {
     head: (
         <>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <meta property="og:title" content="JAVGO"/>
-            <meta property="og:description" content="JAVGO Stack"/>
+            <meta property="og:title" content="TABZCLOUD"/>
+            <meta property="og:description" content="TABZCLOUD Stack"/>
             {/*  站点 Title 图标  */}
             <link rel="icon" href="/svg/logo.svg"/>
         </>
@@ -291,7 +289,7 @@ const config: DocsThemeConfig = {
     // 意见反馈链接
     feedback: {
         // 反馈链接的文本。默认情况下，自定义链接将在 “docsRepositoryBase” 中设置的存储库中打开一个问题。
-        content: 'Issues',
+        content: '反馈',
     },
     // 上一页和下一页链接
     navigation: {
