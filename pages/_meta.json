@@ -1,0 +1,51 @@
+{
+  "index": {
+    "type": "page",
+    "title": "JAVGO",
+    "display": "hidden",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "guid": "站点概览",
+  "navigate": "站点导航",
+  "Collection-Framework": "集合框架",
+  "Concurrent-Programming": "并发编程",
+  "Spring-Framework": "Spring 框架",
+  "ORM-Framework": "ORM 框架",
+  "Database-Systems": "数据库系统",
+  "Message-Engine": "消息引擎",
+  "Design-Patterns": "设计模式",
+  "Command-Manual": "命令手册",
+  "Installation-Manual": "安装手册",
+  "Software-Suite": "软件套件",
+  "Deployment-Ops": "部署运维",
+  "Productivity-Tools": "生产力工具",
+  "Data-Structures": "数据结构",
+  "Interview-Collection": "面试题集",
+  "Web-Frontend": "Web 前端",
+  "chat": {
+    "title": "聊天",
+    "type": "page",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "projects": {
+    "title": "项目",
+    "type": "page",
+    "theme": {
+      "layout": "raw"
+    }
+  },
+  "contact": {
+    "title": "联系 ↗",
+    "type": "page",
+    "href": "https://twitter.com/shuding_",
+    "newWindow": true
+  },
+  "about": {
+    "title": "关于",
+    "type": "page"
+  }
+}

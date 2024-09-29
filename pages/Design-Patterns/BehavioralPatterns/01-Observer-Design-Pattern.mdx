@@ -1,0 +1,90 @@
+# 观察者模式
+
+## 什么是观察者模式？
+
+观察者模式是一种行为设计模式，其中一个对象（称为主题）维护其依赖项（称为观察者）的列表，并在状态发生变化时自动通知它们。
+
+## 为什么要使用观察者模式？
+
+- 降低耦合性：主题和观察者之间的关系是松散的，因为它们不需要了解彼此的详细信息。
+
+- 可重用性：主题或观察者可以在不影响其他对象的情况下被重用。
+
+- 可扩展性：可以轻松地添加新的观察者，而不会影响主题或其他观察者。
+
+## 例子
+
+假设我们有一个名为 `Subject` 的主题，它维护了一个观察者列表，并在状态发生变化时通知它们。
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Desc：主题
+ *
+ * @author javgo
+ * @date 2024-08-10
+ */
+
+public class Subject {
+
+    private List<Observer> observers = new ArrayList<>();
+
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
+}
+```
+
+观察者接口 `Observer`：
+
+```java
+/**
+ * Desc：观察者
+ *
+ * @author javgo
+ * @date 2024-08-10
+ */
+public interface Observer {
+
+    void update();
+}
+```
+
+具体观察者 `ConcreteObserver`：
+
+```java
+
+/**
+ * Desc：具体观察者
+ *
+ * @author javgo
+ * @date 2024-08-10
+ */
+public class ConcreteObserver implements Observer {
+
+    @Override
+    public void update() {
+        // 实现具体的更新逻辑
+    }
+}
+```
+
+## 总结
+
+观察者模式是一种行为设计模式，用于在对象之间建立一对多的依赖关系。当主题的状态发生变化时，它会自动通知所有的观察者。这种模式有助于降低对象之间的耦合性，并提高代码的可维护性和可扩展性。
+
+## 参考
+
+- [Observer Pattern - Refactoring Guru](https://refactoring.guru/design-patterns/observer)

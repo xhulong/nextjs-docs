@@ -1,0 +1,125 @@
+# 策略模式
+
+## 什么是策略模式？
+
+策略模式是一种行为设计模式，它允许在运行时选择算法的行为。策略模式定义了一系列算法，将每个算法封装起来，并使它们可以相互替换。策略模式让算法独立于使用它的客户端。
+
+## 为什么要使用策略模式？
+
+策略模式使得算法可以独立于客户端而变化。这样，客户端可以在运行时选择算法，而不必修改代码。策略模式还可以避免使用大量的条件语句。
+
+## 什么时候使用策略模式？
+
+- 当你有多个类似的类，它们只有行为上的不同时。
+- 当你需要在运行时选择算法。
+- 当你需要避免使用大量的条件语句。
+
+## 例子
+
+假设我们有一个 `Payment` 类，它有一个 `pay` 方法，用于支付订单。我们可以使用策略模式来实现不同的支付方式。
+
+```java
+/**
+ * Desc：支付接口
+ *
+ * @author javgo
+ * @date 2024-08-10
+ */
+public interface PaymentStrategy {
+
+    void pay(double amount);
+}
+```
+
+```java
+/**
+ * Desc：支付宝支付
+ *
+ * @author javgo
+ * @date 2024-08-10
+ */
+public class AliPayStrategy implements PaymentStrategy {
+
+    @Override
+    public void pay(double amount) {
+        System.out.println("支付宝支付：" + amount);
+    }
+}
+```
+
+```java
+/**
+ * Desc：微信支付
+ *
+ * @author javgo
+ * @date 2024-08-10
+ */
+public class WeChatPayStrategy implements PaymentStrategy {
+
+    @Override
+    public void pay(double amount) {
+        System.out.println("微信支付：" + amount);
+    }
+}
+```
+
+```java
+/**
+ * Desc：支付
+ *
+ * @author javgo
+ * @date 2024-08-10
+ */
+public class Payment {
+
+    private PaymentStrategy paymentStrategy;
+
+    public Payment(PaymentStrategy paymentStrategy) {
+        this.paymentStrategy = paymentStrategy;
+    }
+
+    public void pay(double amount) {
+        paymentStrategy.pay(amount);
+    }
+}
+```
+
+现在，我们可以使用策略模式来选择支付方式：
+
+```java
+public class Main {
+
+    public static void main(String[] args) {
+        Payment aliPay = new Payment(new AliPayStrategy());
+        aliPay.pay(100);
+
+        Payment weChatPay = new Payment(new WeChatPayStrategy());
+        weChatPay.pay(200);
+    }
+}
+```
+
+## 优缺点
+
+### 优点
+
+- 算法可以独立于客户端而变化。
+- 可以在运行时选择算法。
+- 可以避免使用大量的条件语句。
+
+### 缺点
+
+- 客户端必须知道所有的策略类。
+
+## 与其他模式的关系
+
+- 策略模式和状态模式的结构类似，但目的不同。策略模式是为了让客户端选择算法，而状态模式是为了让对象在内部状态改变时改变它的行为。
+- 策略模式和工厂模式的结构类似，但目的不同。策略模式是为了让客户端选择算法，而工厂模式是为了创建对象。
+
+## 总结
+
+策略模式是一种行为设计模式，它允许在运行时选择算法的行为。策略模式定义了一系列算法，将每个算法封装起来，并使它们可以相互替换。策略模式让算法独立于使用它的客户端。
+
+## 参考
+
+- [Strategy Pattern - Refactoring Guru](https://refactoring.guru/design-patterns/strategy)

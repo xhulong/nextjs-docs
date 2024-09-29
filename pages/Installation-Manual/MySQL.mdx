@@ -1,0 +1,141 @@
+import PostImg from 'components/PostImg'
+
+# MySQL
+
+> TIP：下面演示的 Linux 系统为 CentOS 7.9。
+
+拉取 MySQL 的 Docker 镜像，官方维护的版本可以在 [Docker Hub](https://hub.docker.com/_/mysql) 进行查阅：
+
+<PostImg src="https://javgo-images.oss-cn-beijing.aliyuncs.com/2024-08-10-035858.png" />
+
+这里以 8.0 为例，执行如下命令拉取镜像：
+
+```bash
+docker pull do.nark.eu.org/library/mysql:8.0
+```
+
+查看镜像：
+
+```bash
+docker images
+```
+
+```bash
+[root@lavm-zzgegfex4j Download]# docker images
+REPOSITORY                     TAG       IMAGE ID       CREATED       SIZE
+do.nark.eu.org/library/mysql   8.0       23b013c7c67d   2 weeks ago   572MB
+```
+
+一般建议将 Docker 容器的系统资源目录挂在到宿主机上。创建需要挂载到 Linux 的相关目录：
+
+```bash
+mkdir -p /develop/mysql
+```
+
+然后使用 Docker 命令启动：
+
+```bash
+docker run -d \
+  --name mysql \
+  --restart always \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -v /develop/mysql/data:/var/lib/mysql \
+  -v /develop/mysql/config:/etc/mysql/conf.d \
+  -v /develop/mysql/logs:/var/log/mysql \
+  -p 3306:3306 \
+  do.nark.eu.org/library/mysql:8.0
+```
+
+命令参数详细解释：
+
+* docker run -d: 启动一个新容器，并让它在后台运行。
+* --name mysql: 为容器指定一个名称，这里是 mysql。
+* -e MYSQL_ROOT_PASSWORD=root: 设置 MySQL 的 root 用户密码，这里是 root。
+* -v /develop/mysql/data:/var/lib/mysql: 将宿主机的 /develop/mysql/data 目录挂载到容器的 /var/lib/mysql 目录。这是 MySQL 数据存储的地方，以免 Docker 容器挂了导致数据丢失。
+* -v /develop/mysql/config:/etc/mysql/conf.d: 将宿主机的 /develop/mysql/config 目录挂载到容器的 /etc/mysql/conf.d 目录。可以将自定义的配置文件放在这个目录。
+* -v /develop/mysql/logs:/var/log/mysql: 将宿主机的 /develop/mysql/logs 目录挂载到容器的 /var/log/mysql 目录存储 MySQL 日志。
+* -p 3306:3306: 将容器的 3306 端口映射到宿主机的 3306 端口。
+
+> Warning: 有时候使用默认的 3306 端口容易被攻击，压垮数据库，建议自行更换别的端口。
+
+查看容器是否启动成功：
+
+```bash
+[root@lavm-zzgegfex4j Download]# docker ps
+CONTAINER ID   IMAGE                              COMMAND                  CREATED         STATUS         PORTS                                                  NAMES
+7ab6cd64281d   do.nark.eu.org/library/mysql:8.0   "docker-entrypoint.s…"   3 seconds ago   Up 2 seconds   0.0.0.0:3306->3306/tcp, :::3306->3306/tcp, 33060/tcp   mysql
+```
+
+进入运行 mysql 的 docker 容器：
+
+```bash
+docker exec -it mysql /bin/bash
+```
+
+使用 mysql 命令打开客户端：
+
+```bash
+mysql -uroot -proot --default-character-set=utf8
+```
+
+修改 root 帐号的权限，使得任何 ip 都能访问：
+
+```bash
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+```
+
+> TIP: 在实际生产中建议将 `'root'@'%'` 修改为 `'root'@'localhost'` 仅允许本机访问，或者更改为对应的内网地址。
+
+如果上面进行授权时提示：
+
+```sql
+ERROR 1410 (42000): You are not allowed to create a user with GRANT
+```
+
+这个错误表示在当前的 MySQL 配置下，不允许通过这种方式创建用户并赋予权限。
+
+确认当前登录的确实是具有足够权限的 `root`  用户：执行  `SELECT CURRENT_USER();` 查看当前登录的用户。确保显示的是 `root@localhost` 或类似的具有足够权限的用户标识。
+
+```sql
+mysql> SELECT CURRENT_USER()
+    -> ;
++----------------+
+| CURRENT_USER() |
++----------------+
+| root@localhost |
++----------------+
+1 row in set (0.01 sec)
+```
+
+执行如下语句查看是否已经存在这个用户配置：
+
+```sql
+SELECT * FROM mysql.user WHERE user='root' AND host='%';
+
+-- 示例
+mysql> SELECT * FROM mysql.user WHERE user='root' AND host='%';
+Empty set (0.01 sec)
+```
+
+如果不存在，可以尝试重新创建这个用户并赋予权限：
+
+```sql
+ CREATE USER 'root'@'%' IDENTIFIED BY 'your_password';
+
+ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+
+ FLUSH PRIVILEGES;
+```
+
+如果有需要可以设置容器自动重启。在 Docker 中，可以通过设置重启策略来控制容器的自动重启行为。Docker 提供了几种不同的重启策略：
+
+* no：不自动重启容器（默认值）。
+* always：无论容器的退出状态如何，始终重启容器。
+* unless-stopped：除非容器被用户显式停止，否则总是重启容器，即使容器已经正常退出（状态码为0）。
+* on-failure：只有在容器非正常退出时（退出状态非0）重启容器。还可以指定一个可选的重启次数限制，例如 on-failure:5 表示在达到5次重启尝试后放弃。
+
+这里以 always 为例：
+
+```bash
+docker update --restart always mysql
+```
